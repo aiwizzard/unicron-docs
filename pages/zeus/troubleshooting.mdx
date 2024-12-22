@@ -1,0 +1,129 @@
+# Troubleshooting Guide
+
+This guide helps you diagnose and resolve common issues in Zeus.
+
+## Common Issues
+
+### Deployment Failures
+
+#### Symptoms
+- Deployment stays in "Pending" state
+- Container fails to start
+- Resource allocation fails
+
+#### Solutions
+
+1. Check resource availability:
+```bash
+zeus cluster-status
+```
+
+2. Verify configuration:
+```bash
+zeus config validate
+```
+
+3. Review deployment logs:
+```bash
+zeus logs --deployment my-deployment --tail 100
+```
+
+### Performance Issues
+
+#### Symptoms
+- High latency
+- Low throughput
+- Memory leaks
+- GPU underutilization
+
+#### Solutions
+
+1. Check resource utilization:
+```bash
+zeus stats my-deployment
+```
+
+2. Profile the model:
+```bash
+zeus profile my-model
+```
+
+3. Optimize configuration:
+```yaml
+optimization:
+  batch_size: 32
+  cache_size: "2Gi"
+  thread_count: 4
+```
+
+### API Issues
+
+#### Symptoms
+- Connection timeouts
+- HTTP errors
+- Authentication failures
+
+#### Solutions
+
+1. Test API connectivity:
+```bash
+zeus api test my-endpoint
+```
+
+2. Verify authentication:
+```bash
+zeus auth verify
+```
+
+3. Check API logs:
+```bash
+zeus logs --api
+```
+
+## Debugging Tools
+
+### Health Check
+Run a comprehensive health check:
+```bash
+zeus health-check
+```
+
+### Diagnostics
+Collect diagnostic information:
+```bash
+zeus diagnostics --full
+```
+
+### Log Analysis
+Analyze logs for patterns:
+```bash
+zeus logs-analyze --last-hour
+```
+
+## Best Practices
+
+1. Regular Health Checks
+   - Run daily health checks
+   - Monitor resource usage
+   - Check error rates
+
+2. Backup and Recovery
+   - Regular configuration backups
+   - Model version control
+   - Recovery procedures
+
+3. Documentation
+   - Keep deployment notes
+   - Document custom configurations
+   - Maintain runbooks
+
+## Getting Help
+
+If you can't resolve an issue:
+
+1. Check the [documentation](/zeus)
+2. Search known issues
+3. Contact support:
+```bash
+zeus support create-ticket
+``` 

@@ -1,0 +1,103 @@
+# Deployment Guide
+
+Learn how to deploy and manage your models in production using Zeus.
+
+## Deployment Options
+
+Zeus supports multiple deployment strategies:
+
+### Single Model Deployment
+
+Basic deployment for a single model:
+
+```bash
+zeus deploy --model my-model
+```
+
+### Multi-Model Deployment
+
+Deploy multiple models in a single project:
+
+```bash
+zeus deploy --models model1,model2,model3
+```
+
+## Configuration
+
+### Resource Configuration
+
+Specify compute resources in `zeus.yaml`:
+
+```yaml
+compute:
+  cpu: 2
+  memory: "4Gi"
+  gpu: 1  # optional
+```
+
+### Scaling Configuration
+
+Configure auto-scaling:
+
+```yaml
+autoscaling:
+  min_replicas: 1
+  max_replicas: 5
+  target_cpu_utilization: 80
+```
+
+## Advanced Deployment Features
+
+### Traffic Splitting
+
+Implement A/B testing or canary deployments:
+
+```bash
+zeus deploy --traffic-split v1=80,v2=20
+```
+
+### Rolling Updates
+
+Perform zero-downtime updates:
+
+```bash
+zeus deploy --rolling-update
+```
+
+### Health Checks
+
+Configure health monitoring:
+
+```yaml
+health_check:
+  initial_delay: 30s
+  period: 10s
+  timeout: 5s
+```
+
+## Deployment Best Practices
+
+1. Always test in staging first
+2. Use version control for configurations
+3. Monitor deployments closely
+4. Set up alerts for critical metrics
+5. Document deployment procedures
+
+## Troubleshooting
+
+If you encounter issues during deployment:
+
+1. Check the logs:
+```bash
+zeus logs --deployment my-deployment
+```
+
+2. Verify the status:
+```bash
+zeus status
+```
+
+3. Review the events:
+```bash
+zeus events
+``` 

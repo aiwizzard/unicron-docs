@@ -1,0 +1,37 @@
+# Advanced Deployments
+
+Advanced deployment features let you control how your API is deployed and scaled. Key capabilities include:
+
+- Rolling updates with zero downtime
+- A/B testing and canary deployments 
+- Automatic recovery from failures
+- Spot instance support for cost optimization
+- Custom scaling policies and thresholds
+- Multi-region deployments
+
+## Deployment Categories
+
+There are several main categories of deployments you can use depending on your workload:
+
+1. **Realtime APIs**
+   - For APIs and services that need immediate responses
+   - Optimized for low latency and high availability
+   - Ideal for web applications and user-facing services
+
+  
+2. **Task APIs** 
+   - For short-lived, scheduled operations
+   - Run to completion and then terminate
+   - Good for periodic jobs and maintenance tasks
+  
+
+3. **Batch APIs**
+   - For processing large volumes of data
+   - Can be scheduled or triggered by events
+   - Optimized for throughput over latency
+
+  
+4. **Async APIs**
+   - For long-running operations
+   - Non-blocking execution model
+   - Suitable for resource-intensive tasks and background processing

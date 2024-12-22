@@ -1,0 +1,157 @@
+# API Reference
+
+Complete reference for Zeus API endpoints and CLI commands.
+
+## REST API
+
+### Authentication
+
+All API requests require authentication:
+
+```bash
+curl -H "Authorization: Bearer YOUR_API_KEY" https://api.zeus.ai/v1/...
+```
+
+### Models API
+
+#### List Models
+```http
+GET /v1/models
+
+Response:
+{
+  "models": [
+    {
+      "id": "model-123",
+      "name": "my-model",
+      "version": "1.0.0",
+      "status": "running"
+    }
+  ]
+}
+```
+
+#### Deploy Model
+```http
+POST /v1/models/deploy
+Content-Type: application/json
+
+{
+  "name": "my-model",
+  "version": "1.0.0",
+  "runtime": "python3.8",
+  "resources": {
+    "cpu": "2",
+    "memory": "4Gi"
+  }
+}
+```
+
+#### Predict
+```http
+POST /v1/models/{model_id}/predict
+Content-Type: application/json
+
+{
+  "inputs": {
+    "data": [1.0, 2.0, 3.0]
+  }
+}
+```
+
+### Deployments API
+
+#### List Deployments
+```http
+GET /v1/deployments
+
+Response:
+{
+  "deployments": [
+    {
+      "id": "dep-123",
+      "model_id": "model-123",
+      "status": "running",
+      "created_at": "2023-01-01T00:00:00Z"
+    }
+  ]
+}
+```
+
+## CLI Reference
+
+### Global Flags
+```bash
+--config      Path to config file
+--profile     Configuration profile to use
+--verbose     Enable verbose logging
+--json        Output in JSON format
+```
+
+### Model Commands
+```bash
+zeus model list                    # List all models
+zeus model deploy [name]          # Deploy a model
+zeus model delete [name]          # Delete a model
+zeus model update [name]          # Update a model
+zeus model logs [name]            # View model logs
+```
+
+### Deployment Commands
+```bash
+zeus deploy create [name]         # Create deployment
+zeus deploy list                  # List deployments
+zeus deploy status [name]         # Check deployment status
+zeus deploy delete [name]         # Delete deployment
+zeus deploy scale [name] [count]  # Scale deployment
+```
+
+### Configuration Commands
+```bash
+zeus config init                  # Initialize configuration
+zeus config view                  # View current configuration
+zeus config set [key] [value]     # Set configuration value
+zeus config unset [key]           # Unset configuration value
+```
+
+## SDK Examples
+
+### Python SDK
+```python
+from zeus import Client
+
+client = Client(api_key="YOUR_API_KEY")
+
+# Deploy model
+model = client.models.deploy(
+    name="my-model",
+    path="./model",
+    runtime="python3.8"
+)
+
+# Make predictions
+prediction = client.predict(
+    model_id="model-123",
+    inputs={"data": [1.0, 2.0, 3.0]}
+)
+```
+
+### JavaScript SDK
+```javascript
+import { ZeusClient } from '@zeus/client';
+
+const client = new ZeusClient({ apiKey: 'YOUR_API_KEY' });
+
+// Deploy model
+const model = await client.models.deploy({
+  name: 'my-model',
+  path: './model',
+  runtime: 'python3.8'
+});
+
+// Make predictions
+const prediction = await client.predict({
+  modelId: 'model-123',
+  inputs: { data: [1.0, 2.0, 3.0] }
+});
+``` 

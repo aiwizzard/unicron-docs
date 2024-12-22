@@ -1,0 +1,9 @@
+{
+  "index": "Introduction",
+  "getting-started": "Getting Started",
+  "concepts": "Core Concepts",
+  "deployment": "Deployment",
+  "monitoring": "Monitoring",
+  "troubleshooting": "Troubleshooting",
+  "reference": "API Reference"
+} 

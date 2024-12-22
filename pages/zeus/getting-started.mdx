@@ -1,0 +1,68 @@
+# Getting Started with Zeus
+
+This guide will help you get up and running with Zeus quickly.
+
+## Prerequisites
+
+Before you begin, ensure you have:
+
+- Python 3.7 or later installed
+- Docker installed and running
+- A Kubernetes cluster (for production deployments)
+- Zeus CLI installed
+
+## Installation
+
+Install the Zeus CLI using pip:
+
+```bash
+pip install zeus-cli
+```
+
+## Authentication
+
+Set up your Zeus credentials:
+
+```bash
+zeus login
+```
+
+## Creating Your First Project
+
+1. Create a new project:
+
+```bash
+zeus init my-project
+cd my-project
+```
+
+2. Configure your project:
+
+```yaml
+# zeus.yaml
+name: my-project
+version: 1.0.0
+runtime: python3.8
+```
+
+## Deploying a Model
+
+1. Prepare your model:
+
+```python
+# model.py
+def predict(payload):
+    return {"prediction": process_data(payload)}
+```
+
+2. Deploy your model:
+
+```bash
+zeus deploy
+```
+
+## Next Steps
+
+- Learn about [Core Concepts](/zeus/concepts)
+- Explore [Deployment Options](/zeus/deployment)
+- Set up [Monitoring](/zeus/monitoring) 

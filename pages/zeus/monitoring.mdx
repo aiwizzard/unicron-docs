@@ -1,0 +1,122 @@
+# Monitoring and Observability
+
+Learn how to monitor your Zeus deployments and ensure optimal performance.
+
+## Metrics Overview
+
+Zeus provides comprehensive metrics across several categories:
+
+### System Metrics
+- CPU usage
+- Memory utilization
+- GPU utilization
+- Network I/O
+- Disk usage
+
+### Model Metrics
+- Inference latency
+- Throughput
+- Error rates
+- Model accuracy
+- Prediction distributions
+
+### API Metrics
+- Request rates
+- Response times
+- Status codes
+- Endpoint usage
+- Client demographics
+
+## Monitoring Dashboard
+
+Access the monitoring dashboard:
+
+```bash
+zeus dashboard
+```
+
+### Custom Dashboards
+
+Create custom views:
+
+```yaml
+# dashboard.yaml
+panels:
+  - name: "Model Performance"
+    metrics:
+      - latency
+      - throughput
+    visualization: "line-graph"
+```
+
+## Alerting
+
+### Setting Up Alerts
+
+Configure alerts in your project:
+
+```yaml
+alerts:
+  - name: "High Latency"
+    condition: "latency > 200ms"
+    severity: "critical"
+    notification:
+      - type: "email"
+        recipients: ["team@example.com"]
+      - type: "slack"
+        channel: "#alerts"
+```
+
+### Alert Types
+- Threshold-based alerts
+- Anomaly detection
+- Error rate spikes
+- Resource utilization
+- Custom metrics
+
+## Logging
+
+### Viewing Logs
+
+Access logs for your deployments:
+
+```bash
+zeus logs --deployment my-deployment
+zeus logs --model my-model
+zeus logs --api-endpoint /predict
+```
+
+### Log Integration
+
+Zeus supports integration with popular logging platforms:
+- ELK Stack
+- Datadog
+- Splunk
+- CloudWatch
+
+## Best Practices
+
+1. Set up baseline metrics
+2. Configure meaningful alerts
+3. Implement proper log retention
+4. Monitor costs and resource usage
+5. Regular performance reviews
+
+## Troubleshooting
+
+Common monitoring issues and solutions:
+
+### Missing Metrics
+```bash
+zeus metrics verify
+```
+
+### Alert Configuration
+```bash
+zeus alerts test
+```
+
+### Dashboard Issues
+```bash
+zeus dashboard debug
+``` 
